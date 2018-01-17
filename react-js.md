@@ -1,3 +1,9 @@
+---
+layout:     default
+permalink:  /react-js.html     # note: should be add by jekyll-readme-index plugin 
+---
+
+
 # React notes
 
 - use Facebook node create react js to setup
