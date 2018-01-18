@@ -16,7 +16,7 @@ permalink:  /react-js.html     # note: should be add by jekyll-readme-index plug
 - nice getting going tutorial with architecture and file placing hints https://www.kirupa.com/react/setting_up_react_environment.htm
 - mobile: https://www.raywenderlich.com/165140/react-native-tutorial-building-ios-android-apps-javascript 
 
-## motivation
+## motivation :+1: 
 - mobile apps: React Native brings the React paradigm to mobile app development. It’s goal isn’t to write the code once and run it on any platform. The goal is to learn-once (the React way) and write-anywhere. Better than Phone Gap etc. 
 - The community has even added tools such as Expo and Create React Native App to help you quickly build React Native apps without having to touch Xcode or Android Studio!
 
@@ -30,6 +30,7 @@ permalink:  /react-js.html     # note: should be add by jekyll-readme-index plug
 - npm run build to minify and build out app
 
 ## components
+A React app is basically just a lot of components, setting state and passing props to one another. 
 
 ### Props (properties)
 - one can render components as way of interacting
@@ -47,6 +48,30 @@ permalink:  /react-js.html     # note: should be add by jekyll-readme-index plug
 	- e.g. if return X else return Y
 - often will pass *functions* as **props**. It is especially common to pass event handler functions.
 - this.props.children will return everything in between a component's opening and closing JSX tags.
+
+#### accessing state in a component
+A React component can access dynamic information in two ways: props and state.
+Unlike props, a component's state is not passed in from the outside. A component decides its own state.
+```
+Class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { mood: 'decent' };
+  }
+```
+access with:
+{this.state.statesName}
+
+A component changes its state by calling the function this.setState().
+The most common way to call this.setState() is to call a custom function that wraps a this.setState() call
+
+Be careful to bind any toggle functions for state as they can lose access to this when called.
+i.e. in React, whenever you define an event handler that uses this, you need to add this.methodName = this.methodName.bind(this) to your constructor function.
+
+Any time that you call this.setState(), this.setState() AUTOMATICALLY calls .render() as soon as the state has changed.
+
+Think of this.setState() as actually being two things: this.setState(), immediately followed by .render().
+GOTCHA: That is why you can't call this.setState() from inside of the .render() method! 
 
 ### event handler functions.
 
@@ -68,5 +93,8 @@ permalink:  /react-js.html     # note: should be add by jekyll-readme-index plug
 - Default parameters are included in the ES6 spec
 - With arrow functions, you can create functions without using the function keyword. You also often do not have to use the return keyword.
 - **Promises** Promises give us a way to make sense out of asynchronous behavior. 
+
+#### Classes
+ It is important to note that React components always have to call super in their constructors to be set up properly.
 
 
